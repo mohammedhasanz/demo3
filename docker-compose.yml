@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - DEFAULT_ADMIN_PASSWORD=${DEFAULT_ADMIN_PASSWORD}
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - invoice_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  invoice_data:
